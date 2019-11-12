@@ -1,0 +1,29 @@
+{
+    "Table": {
+        "TableName": "cars",
+        "KeySchema": [
+            {
+                "AttributeName": "brand",
+                "KeyType": "HASH"
+            },
+            {
+                "AttributeName": "model",
+                "KeyType": "RANGE"
+            }
+        ],
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "brand",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "model",
+                "AttributeType": "S"
+            }
+        ],
+        "ProvisionedThroughput": {
+            "ReadCapacityUnits": 1,
+            "WriteCapacityUnits": 1
+        }
+    }
+}

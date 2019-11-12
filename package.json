@@ -1,0 +1,28 @@
+{
+  "name": "aws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "predynamo": "2>/dev/null docker rm -f $(2>/dev/null docker stop $(docker ps -a -q  --filter ancestor=amazon/dynamodb-local) || :) || :",
+    "dynamo": "docker run -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -inMemory -sharedDb &>/dev/null &",
+    "premigrate": "npm run dynamo",
+    "migrate": "sls dynamodb start --migrate",
+    "prestart": "npm run migrate",
+    "start": "sls offline",
+    "justStart": "sls offline",
+    "justDynamo": "npm run prestart",
+    "deploy": "sls deploy -r eu-central-1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless": "^1.57.0",
+    "serverless-dynamodb-local": "^0.2.38",
+    "serverless-offline": "^5.12.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.568.0"
+  }
+}
