@@ -4,4 +4,4 @@ const options = process.env.IS_OFFLINE ? { region: "localhost", endpoint: "http:
 
 const client = new AWS.DynamoDB.DocumentClient(options);
 
-module.exports = client;
+export default client;

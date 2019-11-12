@@ -14,7 +14,7 @@ custom:
       noStart: true
       migrate: true
     migration:
-      dir: offline/migrations
+      dir: dist/offline/migrations
     stages:
       - dev
 
@@ -36,7 +36,7 @@ provider:
 
 functions:
   create:
-    handler: lambdas/create.create
+    handler: dist/lambdas/create.create
     events:
       - http:
           path: cars
@@ -44,7 +44,7 @@ functions:
           cors: true
 
   list:
-    handler: lambdas/list.list
+    handler: dist/lambdas/list.list
     events:
       - http:
           path: cars
@@ -52,7 +52,7 @@ functions:
           cors: true
 
   get:
-    handler: lambdas/get.get
+    handler: dist/lambdas/get.get
     events:
       - http:
           path: cars/{brand}/{model}
@@ -60,7 +60,7 @@ functions:
           cors: true
 
   update:
-    handler: lambdas/update.update
+    handler: dist/lambdas/update.update
     events:
       - http:
           path: cars/{brand}/{model}
@@ -68,7 +68,7 @@ functions:
           cors: true
 
   delete:
-    handler: lambdas/delete.delete
+    handler: dist/lambdas/deleteItem.deleteItem
     events:
       - http:
           path: cars/{brand}/{model}

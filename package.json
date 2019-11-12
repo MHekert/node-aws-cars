@@ -4,23 +4,37 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "prebuild": "npm run tslint",
+    "build": "tsc",
     "predynamo": "2>/dev/null docker rm -f $(2>/dev/null docker stop $(docker ps -a -q  --filter ancestor=amazon/dynamodb-local) || :) || :",
     "dynamo": "docker run -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -inMemory -sharedDb &>/dev/null &",
     "premigrate": "npm run dynamo",
     "migrate": "sls dynamodb start --migrate",
-    "prestart": "npm run migrate",
+    "prestart": "concurrently \"npm run migrate\" \"npm run build\"",
     "start": "sls offline",
     "justStart": "sls offline",
     "justDynamo": "npm run prestart",
     "deploy": "sls deploy -r eu-central-1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build"
+    }
+  },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^12.12.7",
+    "concurrently": "^5.0.0",
+    "husky": "^3.0.9",
     "serverless": "^1.57.0",
     "serverless-dynamodb-local": "^0.2.38",
-    "serverless-offline": "^5.12.0"
+    "serverless-offline": "^5.12.0",
+    "tsc": "^1.20150623.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2"
   },
   "dependencies": {
     "aws-sdk": "^2.568.0"
