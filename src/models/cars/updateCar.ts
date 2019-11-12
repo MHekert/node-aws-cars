@@ -1,12 +1,14 @@
 import dynamodb from "../../dynamodb";
 import ICarExpressionAttributeValues from "../../interfaces/ICarExpressionAttributeValues";
-import ICarKey from "../../interfaces/ICarKey";
+import createCarKey from "./helpers/createCarKey";
 
 const updateCar = (
-	key: ICarKey,
+	brand: string,
+	model: string,
 	ExpressionAttributeValues: ICarExpressionAttributeValues,
 	UpdateExpression: string
 ) => {
+	const key = createCarKey(brand, model);
 	const params = {
 		TableName: process.env.DYNAMODB_TABLE_CARS,
 		Key: key,
