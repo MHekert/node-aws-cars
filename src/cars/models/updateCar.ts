@@ -1,14 +1,12 @@
 import dynamodb from "../../dynamodb";
-import ICarExpressionAttributeValues from "../../interfaces/ICarExpressionAttributeValues";
+import createUpdateProps from "./helpers/createCarUpdateProps";
 import createCarKey from "./helpers/createCarKey";
+import ICar from "../interfaces/ICar";
 
-const updateCar = (
-	brand: string,
-	model: string,
-	ExpressionAttributeValues: ICarExpressionAttributeValues,
-	UpdateExpression: string
-) => {
-	const key = createCarKey(brand, model);
+const updateCar = async (item: ICar, newItem: ICar) => {
+	const key = createCarKey(item);
+	const {variants, modelYears} = newItem;
+	const { UpdateExpression, ExpressionAttributeValues } = createUpdateProps(variants, modelYears);
 	const params = {
 		TableName: process.env.DYNAMODB_TABLE_CARS,
 		Key: key,
@@ -16,7 +14,6 @@ const updateCar = (
 		UpdateExpression: UpdateExpression,
 		ReturnValues: "ALL_NEW"
 	};
-
 	return dynamodb.update(params).promise();
 };
 
