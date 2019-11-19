@@ -1,4 +1,7 @@
-const createCarItem = (brand: string, model: string, variants: Array<string>, modelYears: string) => {
+import ICar from "../../interfaces/ICar";
+
+const createCarItem = (item: ICar) => {
+	const { brand, model, variants, modelYears } = item;
 	const timestamp = new Date().getTime();
 	return {
 		brand: brand.toLowerCase(),

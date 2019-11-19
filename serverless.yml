@@ -36,7 +36,7 @@ provider:
 
 functions:
   create:
-    handler: dist/lambdas/create.create
+    handler: dist/lambdas/cars/create.create
     events:
       - http:
           path: cars
@@ -44,7 +44,7 @@ functions:
           cors: true
 
   list:
-    handler: dist/lambdas/list.list
+    handler: dist/lambdas/cars/list.list
     events:
       - http:
           path: cars
@@ -52,7 +52,7 @@ functions:
           cors: true
 
   get:
-    handler: dist/lambdas/get.get
+    handler: dist/lambdas/cars/get.get
     events:
       - http:
           path: cars/{brand}/{model}
@@ -60,7 +60,7 @@ functions:
           cors: true
 
   update:
-    handler: dist/lambdas/update.update
+    handler: dist/lambdas/cars/update.update
     events:
       - http:
           path: cars/{brand}/{model}
@@ -68,7 +68,7 @@ functions:
           cors: true
 
   delete:
-    handler: dist/lambdas/deleteItem.deleteItem
+    handler: dist/lambdas/cars/deleteItem.deleteItem
     events:
       - http:
           path: cars/{brand}/{model}

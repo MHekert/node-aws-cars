@@ -1,5 +1,5 @@
-import ICarExpressionAttributeValues from "../../../interfaces/ICarExpressionAttributeValues";
-import { isValidVariantsArr, variantsToLower } from "../../../util";
+import ICarExpressionAttributeValues from "../../../cars/interfaces/ICarExpressionAttributeValues";
+import { isValidVariantsArr, variantsToLower } from "../../util";
 
 const createUpdateProps = (variants: Array<string>, modelYears: string) => {
 	const timestamp = new Date().getTime();
