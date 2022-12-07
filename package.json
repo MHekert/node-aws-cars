@@ -30,7 +30,7 @@
     "@types/node": "^12.12.7",
     "concurrently": "^5.0.0",
     "husky": "^3.0.9",
-    "serverless": "^1.57.0",
+    "serverless": "^3.25.1",
     "serverless-dynamodb-local": "^0.2.38",
     "serverless-offline": "^5.12.0",
     "tsc": "^1.20150623.0",
