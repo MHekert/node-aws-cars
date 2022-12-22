@@ -32,7 +32,7 @@
     "husky": "^3.0.9",
     "serverless": "^1.57.0",
     "serverless-dynamodb-local": "^0.2.38",
-    "serverless-offline": "^5.12.0",
+    "serverless-offline": "^12.0.3",
     "tsc": "^1.20150623.0",
     "tslint": "^5.20.1",
     "typescript": "^3.7.2"
